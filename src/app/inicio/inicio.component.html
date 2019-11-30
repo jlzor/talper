@@ -1,0 +1,59 @@
+﻿<div class="card mt-4">
+    <h4 class="card-header">
+        <div *ngIf="users">
+          <p *ngFor="let user of users">{{user.firstName}} - {{user.lastName}} - Jose Luis Ortega Arana</p>
+        </div>
+    </h4>
+    <div class="card-body">
+        <div>
+                <h6 *ngIf="!bEstado">Gráfica de población de los últimos 3 años</h6>
+                <h6 *ngIf="bEstado">Gráfica de población del estado {{labelEstado}} de 2013 a 2017</h6>
+        </div>
+             <div>
+                <div style="display: block">
+                  <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]=""
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartClick)="populationClicked($event)">
+                  </canvas>
+                </div>
+            </div>
+            <div>
+                    <h6>Gráfica de índice de contaminación del aire por estado.</h6>
+            </div>
+            <div>
+                    <div style="display: block">
+                      <canvas baseChart
+                        [datasets]="barChartDataContaminacion"
+                        [labels]="barChartLabelsContaminacion"
+                        [options]="barChartOptionsContaminacion"
+                        [plugins]=""
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                      </canvas>
+                    </div>
+                </div>
+                <div>
+                    <br>
+                        <h6>Gráfica Extra de mis actividades diarias.</h6>
+                </div>
+                <div>
+                        <div>
+                          <div style="display: block">
+                            <canvas baseChart
+                              [datasets]="barChartDataExtra"
+                              [options]="barChartOptionsExtra"
+                              [labels]="barChartLabelsExtra"
+                              [chartType]="radarChartType">
+                            </canvas>
+                          </div>
+                        </div>
+                </div>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+
+    </div>
+</div>

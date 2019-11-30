@@ -1,0 +1,17 @@
+﻿
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="usuarioTalper">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Inicio</a>
+        <a class="nav-item nav-link" (click)="logout()">Cerrar Sesión</a>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="text-center mt-4">
+    <p>
+        <a href="" target="_top">Talper.com</a>
+    </p>
+</div>
